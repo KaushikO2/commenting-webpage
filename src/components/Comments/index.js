@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import {v4} from 'uuid'
+
 import CommentItem from '../CommentItem'
+
 import './index.css'
 
 const initialContainerBackgroundClassNames = [
@@ -22,6 +24,7 @@ class Comments extends Component {
 
   deleteComment = commentId => {
     const {commentsList} = this.state
+
     this.setState({
       commentsList: commentsList.filter(comment => comment.id !== commentId),
     })
@@ -40,6 +43,7 @@ class Comments extends Component {
 
   renderCommentsList = () => {
     const {commentsList} = this.state
+
     return commentsList.map(eachComment => (
       <CommentItem
         key={eachComment.id}
@@ -78,18 +82,19 @@ class Comments extends Component {
 
   onChangeCommentInput = event => {
     this.setState({
-      nameInput: event.target.value,
+      commentInput: event.target.value,
     })
   }
 
   onChangeNameInput = event => {
     this.setState({
-      commentInput: event.target.value,
+      nameInput: event.target.value,
     })
   }
 
   render() {
     const {nameInput, commentInput, commentsList} = this.state
+
     return (
       <div className="app-container">
         <div className="comments-container">
